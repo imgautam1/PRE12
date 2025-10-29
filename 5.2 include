@@ -1,0 +1,19 @@
+include function:
+<?php
+echo "<h1>Date Functions:<br /></h1>";
+include 'hello.php';
+echo "Date: " . date("j") . "<br/>";
+echo "Month: " . date("F") . "<br/>";
+echo "Year: " . date("Y") . "<br/>";
+echo "Today: " . date("jS F Y") . "<br />";
+?>
+
+require function:
+<?php
+echo "<h1>Date Functions:<br /></h1>";
+require 'hello.php';
+echo "Date: " . date("j") . "<br/>";
+echo "Month: " . date("F") . "<br/>";
+echo "Year: " . date("Y") . "<br/>";
+echo "Today: " . date("jS F Y") . "<br />";
+?>
