@@ -1,0 +1,66 @@
+
+<html>
+<head>
+<title>IU2341230099_5.5</title>
+</head>
+<body>
+<h1>Register Employee</h1>
+<form action="db.php" method="POST">
+<label for="first_name">First Name:</label>
+<input type="text" name="first_name" required><br>
+<label for="last_name">Last Name:</label>
+<input type="text" name="last_name" required><br>
+<label for="email">Email:</label>
+<input type="email" name="email" required><br>
+<label for="hire_date">Hire Date:</label>
+<input type="date" name="hire_date"><br>
+<label for="salary">Salary:</label>
+<input type="text" name="salary"><br>
+<input type="submit" value="Add Employee">
+</form>
+</body>
+</html>
+
+
+<?php
+$conn = new mysqli("localhost", "root", "", "pr_5");
+if ($conn->connect_error)
+{
+die("Connection failed: " . $conn->connect_error);
+}
+$first_name = $_POST['first_name'];
+$last_name = $_POST['last_name'];
+$email = $_POST['email'];
+$hire_date = $_POST['hire_date'];
+$salary = $_POST['salary'];
+$sql = "INSERT INTO employee (first_name, last_name, email, hire_date, salary)
+VALUES ('$first_name', '$last_name', '$email', '$hire_date', '$salary')";
+if ($conn->query($sql) === TRUE) {
+    echo "Employee added successfully.";
+} else {
+echo "Error: " . $sql . "<br>" . $conn->error;
+}
+$sql = "SELECT * FROM employee";
+$result = $conn->query($sql);
+if ($result->num_rows > 0)
+{
+echo "<table border=1>";
+echo
+"<tr><th>SR_NO</th><th>first_name</th><th>last_name</th><th>email</th><th>hire_date</
+th><th>salary
+</th></tr>";
+while ($row = $result->fetch_assoc())
+{
+echo "<tr>";
+echo "<td>" . $row["SR_NO"] . "</td>";
+echo "<td>" . $row["first_name"] . "</td>";
+echo "<td>" . $row["last_name"] . "</td>";
+echo "<td>" . $row["email"] . "</td>";
+echo "<td>" . $row["hire_date"] . "</td>";
+echo "<td>" . $row["salary"] . "</td>";
+echo "</tr>";
+}
+echo "</table>";
+}
+$conn->close();
+?>
