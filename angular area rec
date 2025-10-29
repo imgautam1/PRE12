@@ -1,0 +1,17 @@
+
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+<div ng-app="myApp" ng-controller="myCtrl">
+Area of circle where r= <input ng-model="num">
+<br/>
+equals {{ double(num) }}
+</div>
+<script>
+var myApp = angular.module('myApp',[]);
+myApp.controller('myCtrl', ['$scope', function($scope) {
+$scope.double = function(value) { return value * value * 3.14; };
+}]);
+</script>
+</body>
+</html>
