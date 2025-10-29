@@ -1,0 +1,25 @@
+
+<html>
+<head>
+<title>IU2341230099_pr-3.3</title>
+<link rel="stylesheet" href="style5.css">
+
+</head>
+<body>
+Enter a number: <input type="number" name="num" id="num" /> <br /> <br />
+<button onclick="getAnswer()"> Result </button>
+<h3 name="p1" id="p1"></p>
+<script type="text/javascript">
+function getAnswer() {
+var num = parseInt(document.getElementById("num").value);
+var base = parseInt(num / 10);
+var power = num % 10;
+var ans = 1;
+for(let i = 0; i < power; i++)
+ans = ans * base;
+str = base + " to the power of " + power + " is " + ans;
+document.getElementById("p1").innerHTML = str;
+}
+</script>
+</body>
+</html>
